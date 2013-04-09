@@ -164,8 +164,7 @@
     <Content Include="Client\lib\require-jquery.js" />
     <Content Include="Client\lib\require.js" />
     <Content Include="Client\lib\underscore.js" />
-    <Content Include="Client\loader.js" />
-    <Content Include="Client\underscore.js" />
+    <Content Include="Client\modules\inventory.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

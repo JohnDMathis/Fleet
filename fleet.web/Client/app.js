@@ -24,6 +24,9 @@ require.config({
 });
 
 require(["marionette" ], function (Marionette) {
-    $("h1").html('Marionette is Ready');
     window.Fleet = new Marionette.Application();
+    require(["modules/inventory"], function () {
+        Fleet.start();
+    });
 });
+
