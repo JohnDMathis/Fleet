@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fleet", "fleet\fleet.web.csproj", "{04B7288E-4B8C-45F9-90B9-3D8F5C0988CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fleet", "fleet.web\fleet.web.csproj", "{04B7288E-4B8C-45F9-90B9-3D8F5C0988CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

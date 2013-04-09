@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace playground2
+namespace Fleet
 {
     public class FilterConfig
     {

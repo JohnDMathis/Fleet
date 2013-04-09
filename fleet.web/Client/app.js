@@ -23,6 +23,7 @@ require.config({
     }
 });
 
-require(["jquery", "underscore", "backbone", "marionette" ], function ($, _, Backbone, Marionette) {
-    $("h1").html('Ready');
+require(["marionette" ], function (Marionette) {
+    $("h1").html('Marionette is Ready');
+    window.Fleet = new Marionette.Application();
 });
