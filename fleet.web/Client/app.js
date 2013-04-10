@@ -31,7 +31,6 @@ require(["marionette" ], function (Marionette) {
     });
     
     require(["modules/inventory/controller"], function () {
-        log('Fleet.start()');
         Fleet.start();
     }); 
 });

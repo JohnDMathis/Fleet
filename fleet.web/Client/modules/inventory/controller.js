@@ -1,28 +1,23 @@
-﻿log('controller');
+﻿// define base module elements; other module files may depend
+// on this, but it must not depend on any other module files
+Fleet.module("Inventory", function (Inventory) {
+        Inventory.views = {};
+    });
 
 
-require([
-        "modules/inventory/inventory",
-        "modules/inventory/views/header"
-//        "modules/inventory/views/footer"
+// define the controller last. generally, it should depend on all
+// module files, otherwise they will not get loaded
+define([
+        "modules/inventory/views/header",
+        "modules/inventory/views/footer"
     ],
     function() {
-        log('controller require callback');
-        Fleet.module("Inventory", function (Inventory, Fleet, Backbone, Marionette, $, _) {
-            log('controller module def');
-            Fleet.addInitializer(function () {
-                log('Fleet module ready');
+        Fleet.module("Inventory", function(Inventory, Fleet, Backbone, Marionette, $, _) {
+            Fleet.addInitializer(function() {
                 Fleet.Inventory.headerView = new Fleet.Inventory.views.HeaderView();
+                Fleet.Inventory.footerView = new Fleet.Inventory.views.FooterView();
                 $("h1").html('Fleet module is started');
             });
         });
     });
     
-//Fleet.module("Inventory", function (Inventory, Fleet, Backbone, Marionette, $, _) {
-//    Fleet.addInitializer(function () {
-//        log('Fleet module ready');
-//        $("h1").html('Fleet module is started');
-//        Inventory.headerView = new Inventory.views.HeaderView();
-        
-//    });
-//});
