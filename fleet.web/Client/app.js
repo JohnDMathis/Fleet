@@ -25,8 +25,14 @@ require.config({
 
 require(["marionette" ], function (Marionette) {
     window.Fleet = new Marionette.Application();
-    require(["modules/inventory"], function () {
-        Fleet.start();
+    Fleet.addRegions({
+        header: "#header-region",
+        body: "#body-region"
     });
+    
+    require(["modules/inventory/controller"], function () {
+        log('Fleet.start()');
+        Fleet.start();
+    }); 
 });
 
