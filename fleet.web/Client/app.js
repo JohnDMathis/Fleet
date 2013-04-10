@@ -6,7 +6,9 @@ require.config({
     paths: {
         underscore: 'lib/underscore',
         backbone: 'lib/backbone',
-        marionette:'lib/marionette'
+        marionette: 'lib/marionette',
+        common: 'lib/mycommon',
+        handlebars:'lib/handlebars'
     },
     shim: {
         underscore: {
@@ -19,14 +21,19 @@ require.config({
         marionette: {
             deps: ["backbone"],
             exports:"Marionette"
+        },
+        common: {
+            deps: ["marionette"],
+            exports:"Common"
         }
     }
 });
 
-require(["marionette" ], function (Marionette) {
+require(["marionette","handlebars", "common" ], function (Marionette) {
     window.Fleet = new Marionette.Application();
     Fleet.addRegions({
         header: "#header-region",
+        footer: "#footer-region",
         body: "#body-region"
     });
     
