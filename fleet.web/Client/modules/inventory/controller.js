@@ -17,6 +17,11 @@ define([
                 Fleet.Inventory.headerView = new Fleet.Inventory.views.HeaderView();
                 Fleet.Inventory.footerView = new Fleet.Inventory.views.FooterView();
                 $("h1").html('Fleet module is started');
+                // to do: load templates for each view
+                for (var viewName in Fleet.Inventory.views) {
+                    var view = Fleet.Inventory.views[viewName];
+                    log(view.prototype.template);
+                }
             });
         });
     });
