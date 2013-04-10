@@ -12,12 +12,14 @@ define([
         "modules/inventory/views/footer",
         "modules/inventory/views/body"
     ],
-    function() {
+    function () {
+        
+
         Fleet.module("Inventory", function (Inventory, Fleet, Backbone, Marionette, $, _) {
             this.show = function() {
                 this.headerView = new this.views.HeaderView();
                 this.footerView = new this.views.FooterView();
-                var bodyModel = new Backbone.Model({ message: "Inventory module is started" });
+                var bodyModel = new Backbone.Model({ message: "Inventory module body view" });
                 this.bodyView = new this.views.BodyView({ model: bodyModel });
                 
                 Fleet.header.show(this.headerView);
@@ -32,9 +34,9 @@ define([
                     var view = Fleet.Inventory.views[viewName];
                     templatesToLoad.push(view.prototype.template);
                 }
-                Backbone.Marionette.TemplateCache.templatePath = 'client/modules/inventory/views/';
-                var loadingTemplates = Backbone.Marionette.TemplateCache.preloadTemplates(templatesToLoad, this.Inventory);
-                $.when(loadingTemplates).done(Fleet.Inventory.show);
+                Marionette.TemplateCache.templatePath = 'client/modules/inventory/templates/';
+                var loadingTemplates = Marionette.TemplateCache.preloadTemplates(templatesToLoad, this.Inventory);
+                $.when(loadingTemplates).done(this.Inventory.show);
             });
         });
     });

@@ -165,11 +165,11 @@
     <Content Include="Client\lib\require.js" />
     <Content Include="Client\lib\underscore.js" />
     <Content Include="Client\modules\inventory\controller.js" />
-    <Content Include="Client\modules\inventory\views\body.html" />
+    <Content Include="Client\modules\inventory\templates\body.html" />
     <Content Include="Client\modules\inventory\views\body.js" />
-    <Content Include="Client\modules\inventory\views\footer.html" />
+    <Content Include="Client\modules\inventory\templates\footer.html" />
     <Content Include="Client\modules\inventory\views\footer.js" />
-    <Content Include="Client\modules\inventory\views\header.html" />
+    <Content Include="Client\modules\inventory\templates\header.html" />
     <Content Include="Client\modules\inventory\views\header.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />

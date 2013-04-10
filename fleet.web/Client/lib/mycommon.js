@@ -19,7 +19,7 @@ Backbone.Marionette.TemplateCache.preloadTemplate = function (templateId, contex
         err.name = "NoTemplateSpecified";
         throw err;
     }
-    var hasHasTag = templateId[0] == '#';
+    var hasHasTag = templateId.substr(0, 1) === '#';
     var template = hasHasTag ? $(templateId).html() : null;
     if (template && template.length > 0) {
         Backbone.Marionette.TemplateCache.storeTemplate(templateId, template);
