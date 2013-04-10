@@ -165,7 +165,6 @@
     <Content Include="Client\lib\require.js" />
     <Content Include="Client\lib\underscore.js" />
     <Content Include="Client\modules\inventory\controller.js" />
-    <Content Include="Client\modules\inventory\inventory.js" />
     <Content Include="Client\modules\inventory\views\body.html" />
     <Content Include="Client\modules\inventory\views\body.js" />
     <Content Include="Client\modules\inventory\views\footer.html" />
