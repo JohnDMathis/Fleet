@@ -151,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="build\compileHandlebars.cmd" />
     <None Include="Client\lib\kendo.web-vsdoc.js" />
     <None Include="Client\lib\kendo.web.min.intellisense.js" />
     <Content Include="Client\app.js" />
@@ -183,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Client\generated\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -220,6 +222,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>$(ProjectDir)build\compileHandlebars "$(ProjectDir)" client\generated\templates.js 
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

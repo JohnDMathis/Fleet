@@ -1,0 +1,20 @@
+{
+  "name": "Fleet",
+  "version": "0.0.1",
+  "description": "Demo and reference application using RequireJs, Marionette, and .Net",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JohnDMathis/Fleet.git"
+  },
+  "author": "john mathis",
+  "license": "BSD",
+  "gitHead": "cacdd23d5a3bc7b72ae36460c09978db77861dea",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}

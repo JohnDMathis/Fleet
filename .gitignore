@@ -108,6 +108,12 @@ stylecop.*
 *.dbmdl
 Generated_Code #added for RIA/Silverlight projects
 
+# javascript
+fleet.web/client/generated/*.js
+
+
+
+
 # Backup & report files from converting an old project file to a newer
 # Visual Studio version. Backup files are not needed, because we have git ;-)
 _UpgradeReport_Files/
@@ -137,7 +143,6 @@ Desktop.ini
 *.egg
 *.egg-info
 dist
-build
 eggs
 parts
 bin
