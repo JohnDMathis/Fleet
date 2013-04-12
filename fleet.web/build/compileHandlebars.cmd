@@ -11,4 +11,4 @@ SET _outputFile=%2
 
 SET _tmpDir=%_dir%client\modules\inventory\templates\
 
-handlebars "%_tmpDir%body.html" "%_tmpDir%footer.html" "%_tmpDir%header.html" -m -f "%_dir%%_outputFile%"
+REM handlebars "%_tmpDir%body.html" "%_tmpDir%footer.html" "%_tmpDir%header.html" -m -f "%_dir%%_outputFile%"
