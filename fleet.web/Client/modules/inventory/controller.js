@@ -33,14 +33,20 @@ define(dependencies,
             
             Fleet.addInitializer(function () {
                 // load templates for this module
-                var templatesToLoad = [];
-                for (var viewName in Fleet.Inventory.views) {
-                    var view = Fleet.Inventory.views[viewName];
-                    templatesToLoad.push(view.prototype.template);
+                if (window.AppIsReleased) {
+                    // store precompiled templates as templateCaches and go!
+                    Marionette.TemplateCache.storePrecompiledTemplates(Handlebars.templates);
+                    this.Inventory.show();
+                } else {
+                    var templatesToLoad = [];
+                    for (var viewName in Fleet.Inventory.views) {
+                        var view = Fleet.Inventory.views[viewName];
+                        templatesToLoad.push(view.prototype.template);
+                    }
+                    Marionette.TemplateCache.templatePath = 'client/modules/inventory/templates/';
+                    var loadingTemplates = Marionette.TemplateCache.preloadTemplates(templatesToLoad, this.Inventory);
+                    $.when(loadingTemplates).done(this.Inventory.show);
                 }
-                Marionette.TemplateCache.templatePath = 'client/modules/inventory/templates/';
-                var loadingTemplates = Marionette.TemplateCache.preloadTemplates(templatesToLoad, this.Inventory);
-                $.when(loadingTemplates).done(this.Inventory.show);
             });
         });
     });

@@ -73,3 +73,16 @@ Backbone.Marionette.TemplateCache.storeTemplate = function (templateId, template
     cachedTemplate.compiledTemplate = template;
     Backbone.Marionette.TemplateCache.templateCaches[templateId] = cachedTemplate;
 };
+
+Backbone.Marionette.TemplateCache.storePrecompiledTemplates = function (templates) {
+    _.each(_.keys(templates), function (key) {
+        var templateId = key;
+        var i = key.indexOf('.html');
+        if(i>0) {
+            templateId = templateId.substr(0, i);
+        }
+        var cachedTemplate = new Backbone.Marionette.TemplateCache(templateId);
+        cachedTemplate.compiledTemplate = templates[key];
+        Backbone.Marionette.TemplateCache.templateCaches[templateId] = cachedTemplate;
+    });
+};
