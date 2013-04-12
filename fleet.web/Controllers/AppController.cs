@@ -13,6 +13,11 @@ namespace Fleet.Controllers
 
         public ActionResult Index()
         {
+#if (DEBUG)
+            ViewBag.ReleaseMode = false;
+#else
+            ViewBag.ReleaseMode = true;
+#endif
             return View();
         }
 

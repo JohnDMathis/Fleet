@@ -7,14 +7,18 @@ Fleet.module("Inventory", function (Inventory) {
 
 // define the controller last. generally, it should depend on all
 // module files, otherwise they may not get loaded
-define([
-        "modules/inventory/views/header",
-        "modules/inventory/views/footer",
-        "modules/inventory/views/body"
-    ],
-    function () {
-        
+var dependencies = [
+    "modules/inventory/views/header",
+    "modules/inventory/views/footer",
+    "modules/inventory/views/body"
+];
 
+if (window.AppIsReleased) {
+    dependencies.push('generated/templates');
+}
+
+define(dependencies,
+    function () {
         Fleet.module("Inventory", function (Inventory, Fleet, Backbone, Marionette, $, _) {
             this.show = function() {
                 this.headerView = new this.views.HeaderView();
