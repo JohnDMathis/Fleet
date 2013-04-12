@@ -1,15 +1,19 @@
 ﻿<html>
-<body>
-    <div id="header-region"></div>
-    <div id="body-region"></div>
-    <div id="footer-region"></div>
-    @if(ViewBag.ReleaseMode)
-    {
-        <script type="text/javascript"> window.AppIsReleased = true;</script>
-    } else
-    {
-        <script type="text/javascript"> window.AppIsReleased = false;</script>
-    }
-    <script src="~/Client/lib/require-jquery.js" data-main="/client/app.js"></script>
-</body>
+    <head>
+        <link type="text/css" rel="stylesheet" href="~/Client/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="~/Client/css/bootstrap-responsive.min.css"/>
+    </head>
+    <body>
+        <div id="header-region"></div>
+        <div id="body-region"></div>
+        <div id="footer-region"></div>
+        @if(ViewBag.ReleaseMode)
+        {
+            <script type="text/javascript"> window.AppIsReleased = true;</script>
+        } else
+        {
+            <script type="text/javascript"> window.AppIsReleased = false;</script>
+        }
+        <script src="~/Client/lib/require-jquery.js" data-main="/client/app.js"></script>
+    </body>
 </html>

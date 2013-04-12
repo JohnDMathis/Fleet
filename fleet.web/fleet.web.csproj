@@ -155,7 +155,11 @@
     <None Include="Client\lib\kendo.web-vsdoc.js" />
     <None Include="Client\lib\kendo.web.min.intellisense.js" />
     <Content Include="Client\app.js" />
+    <Content Include="Client\css\bootstrap-responsive.min.css" />
+    <Content Include="Client\css\bootstrap.min.css" />
     <Content Include="Client\generated\templates.js" />
+    <Content Include="Client\img\glyphicons-halflings-white.png" />
+    <Content Include="Client\img\glyphicons-halflings.png" />
     <Content Include="Client\lib\backbone.js" />
     <Content Include="Client\lib\bootstrap.js" />
     <Content Include="Client\lib\handlebars.js" />
@@ -186,6 +190,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
