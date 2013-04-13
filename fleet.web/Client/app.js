@@ -37,7 +37,7 @@ require(["marionette","handlebars", "common" ], function (Marionette) {
         body: "#body-region"
     });
     
-    require(["modules/inventory/controller"], function () {
+    require(["modules/inventory/loader", "modules/main/loader"], function () {
         Fleet.start();
     }); 
 });

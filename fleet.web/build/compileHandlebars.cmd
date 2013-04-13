@@ -9,6 +9,10 @@ SET _outputFile=%2
    SET _dir=%_dir:###"=%
    SET _dir=%_dir:###=%
 
-SET _tmpDir=%_dir%client\modules\inventory\templates\
 
-REM handlebars "%_tmpDir%body.html" "%_tmpDir%footer.html" "%_tmpDir%header.html" -m -f "%_dir%%_outputFile%"
+SET _tmpDir=%_dir%client\modules\inventory\templates\
+handlebars "%_tmpDir%body.html" "%_tmpDir%footer.html" "%_tmpDir%header.html" -m -n "Handlebars.inventory.templates" -f "%_dir%%_outputFile%"
+
+
+SET _tmpDir=%_dir%client\modules\main\templates\
+handlebars "%_tmpDir%body.html" "%_tmpDir%footer.html" "%_tmpDir%header.html" -m -n "Handlebars.main.templates" -f "%_dir%%_outputFile%"
