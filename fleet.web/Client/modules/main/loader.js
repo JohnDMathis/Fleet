@@ -26,16 +26,6 @@ define(dependencies,
     function () {
         Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
             
-            //this.show = function () {
-            //    this.headerView = new this.views.HeaderView();
-            //    this.footerView = new this.views.FooterView();
-
-            //    Fleet.header.show(this.headerView);
-            //    Fleet.footer.show(this.footerView);
-            //};
-            //Fleet.reqres.setHandler("template:prefix", function () {
-            //    return "main-";
-            //}, this);
 
             Fleet.addInitializer(function () {
                 // load templates for this module
@@ -51,7 +41,6 @@ define(dependencies,
                         templatesToLoad.push(view.prototype.template);
                     }
                     Marionette.TemplateCache.templatePath = 'client/modules/main/templates/';
-                    Marionette.TemplateCache.templatePrefix = Main.prefix;
                     var loadingTemplates = Marionette.TemplateCache.preloadTemplates(templatesToLoad, this.Main);
                     $.when(loadingTemplates).done(this.Main.show);
                 }

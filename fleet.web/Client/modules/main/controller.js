@@ -6,7 +6,7 @@
         this.bodyView = new this.views.BodyView();
         
         Fleet.header.show(this.headerView);
-        Fleet.body.show(this.bodyView);
+        Fleet.body1.show(this.bodyView);
         Fleet.footer.show(this.footerView);
     };
 

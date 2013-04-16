@@ -2,10 +2,10 @@
     Fleet.module("Inventory", function (Inventory, Fleet, Backbone, Marionette, $, _) {
         Inventory.views.BodyView = Inventory.baseViews.ItemView.extend({
             template: "body",
-            getTemplate:function () {
-                return this.module.prefix + Marionette.getOption(this, "template");
-                //return Marionette.getOption(this, "template");
-            }   
+            //getTemplate:function () {
+            //    return this.module.prefix + Marionette.getOption(this, "template");
+            //    //return Marionette.getOption(this, "template");
+            //}   
         });
 
     });

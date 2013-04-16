@@ -27,7 +27,7 @@ define(dependencies,
                 var bodyModel = new Backbone.Model({ message: "Inventory module body view" });
                 this.bodyView = new this.views.BodyView({ model: bodyModel });
                 
-                Fleet.body.show(this.bodyView);
+                Fleet.body2.show(this.bodyView);
             };
             
             Fleet.addInitializer(function () {
@@ -40,10 +40,10 @@ define(dependencies,
                     var templatesToLoad = [];
                     for (var viewName in Fleet.Inventory.views) {
                         var view = Fleet.Inventory.views[viewName];
+                        view.prototype.template = Inventory.prefix + view.prototype.template;
                         templatesToLoad.push(view.prototype.template);
                     }
                     Marionette.TemplateCache.templatePath = 'client/modules/inventory/templates/';
-                    Marionette.TemplateCache.templatePrefix = Inventory.prefix;
                     var loadingTemplates = Marionette.TemplateCache.preloadTemplates(templatesToLoad, this.Inventory);
                     $.when(loadingTemplates).done(this.Inventory.show);
                 }

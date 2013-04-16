@@ -34,11 +34,12 @@ require(["marionette","handlebars", "common" ], function (Marionette) {
     Fleet.addRegions({
         header: "#header-region",
         footer: "#footer-region",
-        body: "#body-region"
+        body1: "#body1-region",
+        body2: "#body2-region"
     });
     
-    //require(["modules/inventory/loader", "modules/main/loader"], function () {
-    require(["modules/main/loader"], function () {
+    require(["modules/inventory/loader", "modules/main/loader"], function () {
+    //require(["modules/main/loader"], function () {
         Fleet.start();
     }); 
 });
