@@ -9,6 +9,25 @@ Backbone.Marionette.TemplateCache.prototype.compileTemplate = function (rawTempl
 Backbone.Marionette.TemplateCache.templatePath = 'templates/';
 Backbone.Marionette.TemplateCache.templateExt = '.html';
 
+
+Backbone.Marionette.TemplateCache.loadModuleTemplates = function(module, callback) {
+    if (window.AppIsReleased) {
+        // store precompiled templates as templateCaches and go
+        Marionette.TemplateCache.storePrecompiledTemplates(Handlebars.templates);
+        callback();
+    } else {
+        var templatesToLoad = [];
+        for (var viewName in module.views) {
+            var view = module.views[viewName];
+            view.prototype.template = module.prefix + view.prototype.template;
+            templatesToLoad.push(view.prototype.template);
+        }
+        Marionette.TemplateCache.templatePath = module.templatePath;
+        var loadingTemplates = Marionette.TemplateCache.preloadTemplates(templatesToLoad, module);
+        $.when(loadingTemplates).done(callback);
+    }
+};
+
 Backbone.Marionette.TemplateCache.preloadTemplate = function (templateId, context) {
     var loader = $.Deferred();
     var that = this;

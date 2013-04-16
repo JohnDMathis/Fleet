@@ -171,6 +171,7 @@
     <Content Include="Client\lib\require-jquery.js" />
     <Content Include="Client\lib\require.js" />
     <Content Include="Client\lib\underscore.js" />
+    <Content Include="Client\modules\inventory\controller.js" />
     <Content Include="Client\modules\inventory\loader.js" />
     <Content Include="Client\modules\inventory\templates\body.html" />
     <Content Include="Client\modules\inventory\views\body.js" />

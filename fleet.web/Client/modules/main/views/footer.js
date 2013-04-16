@@ -1,9 +1,7 @@
-﻿define(["modules/main/controller"], function () {
-    Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
+﻿Fleet.module("Main", function(Main, Fleet, Backbone, Marionette, $, _) {
 
-        Main.views.FooterView = Main.baseViews.ItemView.extend({
-            template: "footer"
-        });
-
+    Main.views.FooterView = Marionette.ItemView.extend({
+        template: "footer"
     });
+
 });
