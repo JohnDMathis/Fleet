@@ -1,7 +1,12 @@
 ﻿// define base module elements; other module files may depend
 // on this, but it must not depend on any other module files
 Fleet.module("Main", function (Main) {
+    Main.prefix = "main-";
     Main.views = {};
+    Main.baseViews = {};
+    Main.baseViews.ItemView = Marionette.ItemView.extend({
+        module: Main
+    });
 });
 
 
@@ -28,6 +33,9 @@ define(dependencies,
             //    Fleet.header.show(this.headerView);
             //    Fleet.footer.show(this.footerView);
             //};
+            //Fleet.reqres.setHandler("template:prefix", function () {
+            //    return "main-";
+            //}, this);
 
             Fleet.addInitializer(function () {
                 // load templates for this module
@@ -39,10 +47,11 @@ define(dependencies,
                     var templatesToLoad = [];
                     for (var viewName in Fleet.Main.views) {
                         var view = Fleet.Main.views[viewName];
+                        view.prototype.template = Main.prefix + view.prototype.template;
                         templatesToLoad.push(view.prototype.template);
                     }
                     Marionette.TemplateCache.templatePath = 'client/modules/main/templates/';
-                    Marionette.TemplateCache.templatePrefix = "main-";
+                    Marionette.TemplateCache.templatePrefix = Main.prefix;
                     var loadingTemplates = Marionette.TemplateCache.preloadTemplates(templatesToLoad, this.Main);
                     $.when(loadingTemplates).done(this.Main.show);
                 }

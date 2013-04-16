@@ -26,7 +26,12 @@ Backbone.Marionette.TemplateCache.preloadTemplate = function (templateId, contex
         loader.resolveWith(context);
 
     } else {
-        var fileName = hasHasTag ? templateId.substr(1) : templateId;
+        var dashPos = templateId.indexOf('-');
+        var fileName = hasHasTag
+            ? templateId.substr(1)
+            : dashPos > 0
+                ? templateId.substr(dashPos+1)
+                : templateId;
         var url = Backbone.Marionette.TemplateCache.templatePath + fileName + Backbone.Marionette.TemplateCache.templateExt;
 
         $.get(url, function (serverTemplate) {
@@ -37,6 +42,7 @@ Backbone.Marionette.TemplateCache.preloadTemplate = function (templateId, contex
                 throw err;
             }
 
+           // templateId = (context.templatePrefix) ? context.templatePrefix + templateId : templateId;
             Backbone.Marionette.TemplateCache.storeTemplate(templateId, serverTemplate);
             loader.resolveWith(context);
 

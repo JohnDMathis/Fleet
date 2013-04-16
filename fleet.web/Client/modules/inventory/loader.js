@@ -1,8 +1,13 @@
 ﻿// define base module elements; other module files may depend
 // on this, but it must not depend on any other module files
 Fleet.module("Inventory", function (Inventory) {
+    Inventory.prefix = "inv-";
     Inventory.views = {};
+    Inventory.baseViews = { };
+    Inventory.baseViews.ItemView = Marionette.ItemView.extend({
+        module: Inventory
     });
+});
 
 
 // define the loader last. generally, it should depend on all
@@ -38,6 +43,7 @@ define(dependencies,
                         templatesToLoad.push(view.prototype.template);
                     }
                     Marionette.TemplateCache.templatePath = 'client/modules/inventory/templates/';
+                    Marionette.TemplateCache.templatePrefix = Inventory.prefix;
                     var loadingTemplates = Marionette.TemplateCache.preloadTemplates(templatesToLoad, this.Inventory);
                     $.when(loadingTemplates).done(this.Inventory.show);
                 }

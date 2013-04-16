@@ -6,9 +6,8 @@
         this.bodyView = new this.views.BodyView();
         
         Fleet.header.show(this.headerView);
+        Fleet.body.show(this.bodyView);
         Fleet.footer.show(this.footerView);
-        this.bodyView.render();
-        Fleet.body.$el.append(this.bodyView.$el.html());
     };
 
 });
