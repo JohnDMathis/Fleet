@@ -6,4 +6,9 @@
 
         Fleet.body2.show(this.bodyView);
     };
+
+    this.onTemplatesLoaded = function() {
+        this.show();
+    };
+
 });

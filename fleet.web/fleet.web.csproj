@@ -155,6 +155,7 @@
     <Content Include="build\compileHandlebars.cmd" />
     <None Include="Client\lib\kendo.web-vsdoc.js" />
     <None Include="Client\lib\kendo.web.min.intellisense.js" />
+    <Content Include="build\test.txt" />
     <Content Include="Client\app.js" />
     <Content Include="Client\css\bootstrap-responsive.min.css" />
     <Content Include="Client\css\bootstrap.min.css" />
@@ -192,6 +193,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Client\modules\main\templates\compile.cmd" />
+    <Content Include="Client\modules\inventory\templates\compile.cmd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -238,7 +241,8 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>IF $(ConfigurationName) EQU Release (
-$(ProjectDir)build\compileHandlebars "$(ProjectDir)" client\generated\templates.js
+$(ProjectDir)client\modules\main\templates\compile.cmd "$(ProjectDir)"
+$(ProjectDir)client\modules\inventory\templates\compile.cmd "$(ProjectDir)"
 )
 
 </PostBuildEvent>

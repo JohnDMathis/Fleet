@@ -31,7 +31,7 @@ var dependencies = [
 
 // only when in 'release' mode, depend on the generated templates file
 if (window.AppIsReleased) {
-    dependencies.push('generated/templates');
+    dependencies.push('generated/inv-templates');
 }
 
 // define the loader last. generally, it should depend on all
@@ -42,7 +42,7 @@ define(dependencies,
             
             Fleet.addInitializer(function () {
                 // load templates for this module
-                Marionette.TemplateCache.loadModuleTemplates(Fleet.Inventory, Fleet.Inventory.show);
+                Marionette.ModuleHelper.loadModuleTemplates(Fleet.Inventory, Fleet.Inventory.show);
             });
         });
     });

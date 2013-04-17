@@ -43,7 +43,7 @@ define(dependencies,
 
             Fleet.addInitializer(function () {
                 // load templates for this module
-                Marionette.TemplateCache.loadModuleTemplates(Fleet.Main, Fleet.Main.show);
+                Marionette.ModuleHelper.loadModuleTemplates(Fleet.Main, Fleet.Main.show);
             });
         });
     });

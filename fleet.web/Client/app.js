@@ -1,7 +1,4 @@
-﻿function log(str) {
-    console.log(str);
-}
-
+﻿
 require.config({
     paths: {
         underscore: 'lib/underscore',
