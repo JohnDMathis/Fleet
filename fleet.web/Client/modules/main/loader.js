@@ -8,9 +8,13 @@
 // define base module elements; other module files may depend
 // on this, but it must not depend on any other module files
 Fleet.module("Main", function (Main) {
-    Main.prefix = "main-";
+    Main.prefix = "main";
     Main.templatePath = "client/modules/main/templates/";
     Main.views = {};
+    Main.template = function(str) {
+        return Main.prefix + '-' + str;
+    };
+
 });
 
 

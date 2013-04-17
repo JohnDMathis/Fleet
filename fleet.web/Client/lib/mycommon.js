@@ -22,13 +22,13 @@ Marionette.ModuleHelper = (function(Marionette, _) {
 
         if (window.AppIsReleased) {
             // store precompiled templates as templateCaches and go
-            moduleHelper.storePrecompiledTemplates(Handlebars.templates);
+            moduleHelper.storePrecompiledTemplates(Handlebars[moduleHelper.templatePrefix]);
             module.triggerMethod("templates:loaded", this);
         } else {
             var templatesToLoad = [];
             for (var viewName in module.views) {
                 var view = module.views[viewName];
-                view.prototype.template = module.prefix + view.prototype.template;
+                //view.prototype.template = module.prefix + view.prototype.template;
                 templatesToLoad.push(view.prototype.template);
             }
             var loadingTemplates = moduleHelper.preloadTemplates(templatesToLoad, module);
@@ -108,7 +108,7 @@ Marionette.ModuleHelper = (function(Marionette, _) {
 
     moduleHelper.storePrecompiledTemplates = function(templates) {
         _.each(_.keys(templates), function(key) {
-            var templateId = moduleHelper.templatePrefix + key;
+            var templateId = moduleHelper.templatePrefix + '-' + key;
             var i = templateId.indexOf('.html');
             if (i > 0) {
                 templateId = templateId.substr(0, i);

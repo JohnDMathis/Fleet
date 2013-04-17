@@ -9,14 +9,17 @@
 // on this, but it must not depend on any other module files
 
 Fleet.module("Inventory", function () {
-    this.prefix = "inv-";
+    this.prefix = "inv";
     this.templatePath = "client/modules/inventory/templates/";
     this.views = {};
+    this.template = function (str) {
+        return this.prefix + '-' + str;
+    };
 });
 
 
 
-// Recommended: define all dependencies for this module
+// Recommended: define all dependencies for this module here.
 // while you could spread dependency requirements
 // over all your module files on purely "as needed" basis,
 // this adds to complication of code in your module files

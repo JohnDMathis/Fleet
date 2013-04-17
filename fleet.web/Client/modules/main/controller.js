@@ -10,8 +10,6 @@
         Fleet.footer.show(this.footerView);
     };
 
-//    this.listenTo(this.model, "change", this.modelChanged, this);
-
     this.onTemplatesLoaded = function() {
         this.show();
     };
