@@ -240,9 +240,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>IF $(ConfigurationName) EQU Release (
-$(ProjectDir)client\modules\main\templates\compile.cmd "$(ProjectDir)"
-$(ProjectDir)client\modules\inventory\templates\compile.cmd "$(ProjectDir)"
+    <PostBuildEvent>REM IF $(ConfigurationName) EQU Release (
+REM $(ProjectDir)client\modules\main\templates\compile.cmd "$(ProjectDir)"
+REM $(ProjectDir)client\modules\inventory\templates\compile.cmd "$(ProjectDir)"
 )
 
 </PostBuildEvent>
