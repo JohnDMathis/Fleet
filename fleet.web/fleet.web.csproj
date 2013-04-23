@@ -171,10 +171,6 @@
     <Content Include="Client\lib\require-jquery.js" />
     <Content Include="Client\lib\require.js" />
     <Content Include="Client\lib\underscore.js" />
-    <Content Include="Client\modules\inventory\controller.js" />
-    <Content Include="Client\modules\inventory\loader.js" />
-    <Content Include="Client\modules\inventory\templates\body.html" />
-    <Content Include="Client\modules\inventory\views\body.js" />
     <Content Include="Client\modules\main.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -185,15 +181,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Client\modules\main\templates\compile.cmd" />
-    <Content Include="Client\modules\inventory\templates\compile.cmd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\generated\" />
-    <Folder Include="Client\modules\main\views\" />
     <Folder Include="Models\" />
-    <Folder Include="NewFolder1\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>

@@ -38,9 +38,5 @@ require(["marionette","handlebars", "common" ], function (Marionette) {
         Fleet.start();
     });
 
-    //Fleet.commands.setHandler("inventoryModuleRequested", function() {
-    //    require(["modules/inventory/loader"]);
-    //});
-
 });
 
