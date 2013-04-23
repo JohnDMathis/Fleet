@@ -1,20 +1,41 @@
 ﻿<html>
-    <head>
-        <link type="text/css" rel="stylesheet" href="~/Client/css/bootstrap.min.css"/>
-        <link type="text/css" rel="stylesheet" href="~/Client/css/bootstrap-responsive.min.css"/>
-    </head>
-    <body>
-        <div id="header-region"></div>
-        <div id="body1-region"></div>
-        <div id="body2-region"></div>
-        <div id="footer-region"></div>
-        @if(ViewBag.ReleaseMode)
-        {
-            <script type="text/javascript"> window.AppIsReleased = true;</script>
-        } else
-        {
-            <script type="text/javascript"> window.AppIsReleased = false;</script>
-        }
-        <script src="~/Client/lib/require-jquery.js" data-main="/client/app.js"></script>
-    </body>
+<head>
+    <link type="text/css" rel="stylesheet" href="~/Client/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Client/css/bootstrap-responsive.min.css" />
+</head>
+<body>
+    <div id="header-region"></div>
+    <div id="body1-region"></div>
+    <div id="body2-region"></div>
+    <div id="footer-region"></div>
+    @if (ViewBag.ReleaseMode)
+    {
+        <script type="text/javascript"> window.AppIsReleased = true;</script>
+    }
+    else
+    {
+        <script type="text/javascript"> window.AppIsReleased = false;</script>
+    }
+    <script src="~/Client/lib/require-jquery.js" data-main="/client/app.js"></script>
+    <script id="main-body" type="text/html">
+        <div class="well well-small">
+            Body for main.
+            <div>
+                <div id="inventory-btn" class="btn btn-primary">Load Inventory Module</div>
+            </div>
+        </div>
+
+    </script>
+    
+    <script id="main-header" type="text/html">
+        <h2>Main Header</h2>
+    </script>
+    
+    <script id="main-footer" type="text/html">
+        <h3>Main Footer</h3>
+    </script>
+
+</body>
 </html>
+
+

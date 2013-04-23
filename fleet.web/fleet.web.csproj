@@ -175,14 +175,7 @@
     <Content Include="Client\modules\inventory\loader.js" />
     <Content Include="Client\modules\inventory\templates\body.html" />
     <Content Include="Client\modules\inventory\views\body.js" />
-    <Content Include="Client\modules\main\controller.js" />
-    <Content Include="Client\modules\main\loader.js" />
-    <Content Include="Client\modules\main\templates\body.html" />
-    <Content Include="Client\modules\main\templates\footer.html" />
-    <Content Include="Client\modules\main\views\body.js" />
-    <Content Include="Client\modules\main\views\footer.js" />
-    <Content Include="Client\modules\main\templates\header.html" />
-    <Content Include="Client\modules\main\views\header.js" />
+    <Content Include="Client\modules\main.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -198,6 +191,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Client\generated\" />
+    <Folder Include="Client\modules\main\views\" />
     <Folder Include="Models\" />
     <Folder Include="NewFolder1\" />
     <Folder Include="Services\" />

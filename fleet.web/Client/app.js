@@ -20,8 +20,7 @@ require.config({
             exports:"Marionette"
         },
         common: {
-            deps: ["marionette"],
-            exports:"Common"
+            deps: ["marionette"]
         }
     }
 });
@@ -35,13 +34,13 @@ require(["marionette","handlebars", "common" ], function (Marionette) {
         body2: "#body2-region"
     });
     
-    require(["modules/main/loader"], function () {
+    require(["modules/main"], function () {
         Fleet.start();
     });
 
-    Fleet.commands.setHandler("inventoryModuleRequested", function() {
-        require(["modules/inventory/loader"]);
-    });
+    //Fleet.commands.setHandler("inventoryModuleRequested", function() {
+    //    require(["modules/inventory/loader"]);
+    //});
 
 });
 
