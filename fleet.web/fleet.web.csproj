@@ -171,10 +171,6 @@
     <Content Include="Client\lib\require-jquery.js" />
     <Content Include="Client\lib\require.js" />
     <Content Include="Client\lib\underscore.js" />
-    <Content Include="Client\modules\inventory\controller.js" />
-    <Content Include="Client\modules\inventory\loader.js" />
-    <Content Include="Client\modules\inventory\templates\body.html" />
-    <Content Include="Client\modules\inventory\views\body.js" />
     <Content Include="Client\modules\main\controller.js" />
     <Content Include="Client\modules\main\loader.js" />
     <Content Include="Client\modules\main\templates\body.html" />
@@ -192,8 +188,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Client\modules\main\templates\compile.cmd" />
-    <Content Include="Client\modules\inventory\templates\compile.cmd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
