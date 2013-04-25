@@ -8,13 +8,8 @@
         <div id="body1-region"></div>
         <div id="body2-region"></div>
         <div id="footer-region"></div>
-        @if(ViewBag.ReleaseMode)
-        {
-            <script type="text/javascript"> window.AppIsReleased = true;</script>
-        } else
-        {
-            <script type="text/javascript"> window.AppIsReleased = false;</script>
-        }
+
         <script src="~/Client/lib/require-jquery.js" data-main="/client/app.js"></script>
+
     </body>
 </html>

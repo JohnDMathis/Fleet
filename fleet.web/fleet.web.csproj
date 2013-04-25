@@ -167,7 +167,7 @@
     <Content Include="Client\lib\jquery-ui-1.9.0.min.js" />
     <Content Include="Client\lib\jquery.js" />
     <Content Include="Client\lib\marionette.js" />
-    <Content Include="Client\lib\mycommon.js" />
+    <Content Include="Client\lib\modulehelper.js" />
     <Content Include="Client\lib\require-jquery.js" />
     <Content Include="Client\lib\require.js" />
     <Content Include="Client\lib\underscore.js" />
