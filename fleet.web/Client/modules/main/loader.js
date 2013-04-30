@@ -33,11 +33,6 @@ var dependencies = [
 ];
 
 
-// only when in 'release' mode, depend on the generated templates file
-if (window.AppIsReleased) {
-    dependencies.push('generated/main-templates');
-}
-
 // define the loader last. generally, it should depend on all
 // module files, otherwise they may not get loaded
 define(dependencies,
