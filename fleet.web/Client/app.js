@@ -4,8 +4,8 @@ require.config({
         underscore: 'lib/underscore',
         backbone: 'lib/backbone',
         marionette: 'lib/marionette',
-        common: 'lib/mycommon',
-        handlebars:'lib/handlebars'
+        modulehelper: 'lib/modulehelper',
+        handlebars: 'lib/handlebars'
     },
     shim: {
         underscore: {
@@ -17,16 +17,24 @@ require.config({
         },
         marionette: {
             deps: ["backbone"],
-            exports:"Marionette"
+            exports: "Marionette"
         },
-        common: {
-            deps: ["marionette"],
-            exports:"Common"
+        handlebars: {
+            exports: 'Handlebars'
+        },
+        modulehelper: {
+            deps: ["marionette"]
         }
     }
 });
 
-require(["marionette","handlebars", "common" ], function (Marionette) {
+require(["marionette","handlebars", "modulehelper" ], function (Marionette, Handlebars) {
+    // use handlebars instead of underscore templates
+    Marionette.TemplateCache.prototype.compileTemplate = function (template) {
+        return Handlebars.compile(template);
+    };
+
+    
     window.Fleet = new Marionette.Application();
     Fleet.addRegions({
         header: "#header-region",
@@ -39,8 +47,8 @@ require(["marionette","handlebars", "common" ], function (Marionette) {
         Fleet.start();
     });
 
-    Fleet.commands.setHandler("inventoryModuleRequested", function() {
-        require(["modules/inventory/loader"]);
+    Fleet.commands.setHandler("moduleRequested", function(moduleName) {
+        require(["modules/" + moduleName + "/loader"]);
     });
 
 });

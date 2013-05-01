@@ -6,7 +6,7 @@
             "click #inventory-btn": "inventoryModuleRequested"
         },
         inventoryModuleRequested:function () {
-            Fleet.execute("inventoryModuleRequested");
+            Fleet.execute("moduleRequested","inventory");
         }
     });
 
