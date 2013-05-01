@@ -3,17 +3,11 @@ Marionette.ModuleHelper = (function(Marionette, _) {
     "use strict";
 
     var moduleHelper = { };
-//    moduleHelper.views = {};
     
     moduleHelper.templatePath = 'templates/';
     moduleHelper.templateExt = ".html";
     moduleHelper.templatePrefix = "";
 
-    //moduleHelper.views.ItemView = Marionette.ItemView.extend({
-    //    constructor: function () {
-    //        Marionette.View.prototype.constructor.apply(this, Array.prototype.slice(arguments));
-    //    },
-    //})
     
     moduleHelper.loadModuleTemplates = function (module, callback) {
         // walk the views in the provided module
