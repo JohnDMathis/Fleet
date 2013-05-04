@@ -1,11 +1,16 @@
 ﻿
+
 require.config({
     paths: {
         underscore: 'lib/underscore',
         backbone: 'lib/backbone',
         marionette: 'lib/marionette',
         common: 'lib/mycommon',
-        handlebars:'lib/handlebars'
+        handlebars:(function () {
+            var path = 'lib/handlebars';
+            if (window.AppIsReleased) path += '.runtime';
+            return path;
+        })()
     },
     shim: {
         underscore: {
@@ -25,6 +30,7 @@ require.config({
         }
     }
 });
+
 
 require(["marionette","handlebars", "common" ], function (Marionette) {
     window.Fleet = new Marionette.Application();

@@ -164,6 +164,7 @@
     <Content Include="Client\lib\backbone.js" />
     <Content Include="Client\lib\bootstrap.js" />
     <Content Include="Client\lib\handlebars.js" />
+    <Content Include="Client\lib\handlebars.runtime.js" />
     <Content Include="Client\lib\jquery-ui-1.9.0.min.js" />
     <Content Include="Client\lib\jquery.js" />
     <Content Include="Client\lib\marionette.js" />
@@ -240,9 +241,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>REM IF $(ConfigurationName) EQU Release (
-REM $(ProjectDir)client\modules\main\templates\compile.cmd "$(ProjectDir)"
-REM $(ProjectDir)client\modules\inventory\templates\compile.cmd "$(ProjectDir)"
+    <PostBuildEvent>IF $(ConfigurationName) EQU Release (
+$(ProjectDir)client\modules\main\templates\compile.cmd "$(ProjectDir)"
+$(ProjectDir)client\modules\inventory\templates\compile.cmd "$(ProjectDir)"
 )
 
 </PostBuildEvent>

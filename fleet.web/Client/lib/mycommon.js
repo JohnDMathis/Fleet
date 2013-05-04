@@ -6,6 +6,31 @@ Marionette.TemplateCache.prototype.compileTemplate = function (rawTemplate) {
     return Handlebars.compile(rawTemplate);
 };
 
+Marionette.ItemView = Marionette.ItemView.extend({
+    render: function () {
+        this.isClosed = false;
+
+        this.triggerMethod("before:render", this);
+        this.triggerMethod("item:before:render", this);
+
+        var data = this.serializeData();
+        data = this.mixinTemplateHelpers(data);
+
+        var template = this.getTemplate();
+        var html = Marionette.Renderer.render(template, data);
+        if (html.indexOf("<") === 1)
+            html = html.substr(1);
+
+        this.$el.html(html);
+        this.bindUIElements();
+
+        this.triggerMethod("render", this);
+        this.triggerMethod("item:rendered", this);
+
+        return this;
+    }
+});
+
 
 Marionette.ModuleHelper = (function(Marionette, _) {
     "use strict";
