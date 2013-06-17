@@ -5,7 +5,7 @@ require.config({
         underscore: 'lib/underscore',
         backbone: 'lib/backbone',
         marionette: 'lib/marionette',
-        common: 'lib/mycommon',
+        modulehelper: 'lib/modulehelper',
         handlebars:(function () {
             var path = 'lib/handlebars';
             if (window.AppIsReleased) path += '.runtime';
@@ -24,15 +24,14 @@ require.config({
             deps: ["backbone"],
             exports:"Marionette"
         },
-        common: {
-            deps: ["marionette"],
-            exports:"Common"
+        modulehelper: {
+            deps: ["marionette"]
         }
     }
 });
 
 
-require(["marionette","handlebars", "common" ], function (Marionette) {
+require(["marionette","handlebars", "modulehelper" ], function (Marionette) {
     window.Fleet = new Marionette.Application();
     Fleet.addRegions({
         header: "#header-region",
@@ -42,6 +41,7 @@ require(["marionette","handlebars", "common" ], function (Marionette) {
     });
     
     require(["modules/main/loader"], function () {
+   // require(["generated/main"], function () {
         Fleet.start();
     });
 

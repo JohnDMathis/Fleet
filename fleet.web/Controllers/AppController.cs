@@ -8,9 +8,6 @@ namespace Fleet.Controllers
 {
     public class AppController : Controller
     {
-        //
-        // GET: /App/
-
         public ActionResult Index()
         {
 #if (DEBUG)

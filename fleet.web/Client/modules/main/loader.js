@@ -7,14 +7,21 @@
 
 // define base module elements; other module files may depend
 // on this, but it must not depend on any other module files
-Fleet.module("Main", function (Main) {
+
+Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
     Main.prefix = "main";
     Main.templatePath = "client/modules/main/templates/";
     Main.views = {};
     Main.template = function(str) {
         return Main.prefix + '-' + str;
     };
-
+    
+    Fleet.addInitializer(function () {
+        // load templates for this module
+        Marionette.ModuleHelper.loadModuleTemplates(Main, Main.show);
+    });
+    
+    // insert dependencies here
 });
 
 
@@ -41,14 +48,12 @@ if (window.AppIsReleased) {
 // define the loader last. generally, it should depend on all
 // module files, otherwise they may not get loaded
 define(dependencies,
-    function () {
-        Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
-            
-
-            Fleet.addInitializer(function () {
-                // load templates for this module
-                Marionette.ModuleHelper.loadModuleTemplates(Fleet.Main, Fleet.Main.show);
-            });
-        });
+//define(["modules/main/controller",
+//        "modules/main/views/header",
+//        "modules/main/views/footer",
+//        "modules/main/views/body",
+//        "generated/main-templates"
+//    ],
+    function() {
     });
 

@@ -168,7 +168,7 @@
     <Content Include="Client\lib\jquery-ui-1.9.0.min.js" />
     <Content Include="Client\lib\jquery.js" />
     <Content Include="Client\lib\marionette.js" />
-    <Content Include="Client\lib\mycommon.js" />
+    <Content Include="Client\lib\ModuleHelper.js" />
     <Content Include="Client\lib\require-jquery.js" />
     <Content Include="Client\lib\require.js" />
     <Content Include="Client\lib\underscore.js" />
@@ -177,6 +177,8 @@
     <Content Include="Client\modules\inventory\templates\body.html" />
     <Content Include="Client\modules\inventory\views\body.js" />
     <Content Include="Client\modules\main\controller.js" />
+    <Content Include="Client\modules\main\loader-b.js" />
+    <Content Include="Client\modules\main\loader-a.js" />
     <Content Include="Client\modules\main\loader.js" />
     <Content Include="Client\modules\main\templates\body.html" />
     <Content Include="Client\modules\main\templates\footer.html" />
@@ -185,6 +187,7 @@
     <Content Include="Client\modules\main\templates\header.html" />
     <Content Include="Client\modules\main\views\header.js" />
     <Content Include="Global.asax" />
+    <Content Include="loader.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
