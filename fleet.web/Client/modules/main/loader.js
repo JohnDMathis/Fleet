@@ -24,6 +24,7 @@ Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
     // insert dependencies here
 });
 
+//!Section Delimiter. Do not change or remove!
 
 // Recommended: define all dependencies for this module
 // while you could spread dependency requirements
@@ -31,6 +32,7 @@ Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
 // this adds to complication of code in your module files
 // defining them all, here, has the advantage of limiting use of RequireJS
 // to this loader file only
+
 
 var dependencies = [
     "modules/main/controller",
@@ -40,20 +42,11 @@ var dependencies = [
 ];
 
 
-// only when in 'release' mode, depend on the generated templates file
+ // only when in 'release' mode, depend on the generated templates file
 if (window.AppIsReleased) {
     dependencies.push('generated/main-templates');
 }
 
-// define the loader last. generally, it should depend on all
-// module files, otherwise they may not get loaded
-define(dependencies,
-//define(["modules/main/controller",
-//        "modules/main/views/header",
-//        "modules/main/views/footer",
-//        "modules/main/views/body",
-//        "generated/main-templates"
-//    ],
-    function() {
-    });
+// define and load dependencies
+define(dependencies, function() {});
 

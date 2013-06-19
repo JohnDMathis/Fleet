@@ -1,6 +1,10 @@
-﻿Fleet.module("Main", function(Main, Fleet, Backbone, Marionette, $, _) {
+﻿
 
-    this.show = function() {
+
+Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
+
+
+    this.show = function () {
         this.headerView = new this.views.HeaderView();
         this.footerView = new this.views.FooterView();
         this.bodyView = new this.views.BodyView();
@@ -13,4 +17,5 @@
     this.onTemplatesLoaded = function() {
         this.show();
     };
+    
 });

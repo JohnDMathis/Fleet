@@ -152,13 +152,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="build\compileHandlebars.cmd" />
+    <Content Include="build\package.json" />
     <None Include="Client\lib\kendo.web-vsdoc.js" />
     <None Include="Client\lib\kendo.web.min.intellisense.js" />
-    <Content Include="build\test.txt" />
+    <Content Include="build\gruntfile.js" />
     <Content Include="Client\app.js" />
     <Content Include="Client\css\bootstrap-responsive.min.css" />
     <Content Include="Client\css\bootstrap.min.css" />
+    <Content Include="Client\generated\main.js" />
     <Content Include="Client\img\glyphicons-halflings-white.png" />
     <Content Include="Client\img\glyphicons-halflings.png" />
     <Content Include="Client\lib\backbone.js" />
@@ -201,7 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\generated\" />
     <Folder Include="Models\" />
     <Folder Include="NewFolder1\" />
     <Folder Include="Services\" />
