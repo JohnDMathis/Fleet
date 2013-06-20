@@ -39,9 +39,14 @@ require(["marionette","handlebars", "modulehelper" ], function (Marionette) {
         body1: "#body1-region",
         body2: "#body2-region"
     });
+
+    var dependencies = [];
+    if(window.AppIsReleased)
+        dependencies.push("generated/main");
+    else
+        dependencies.push("modules/main/loader");
     
-    require(["modules/main/loader"], function () {
-   // require(["generated/main"], function () {
+    require(dependencies, function () {
         Fleet.start();
     });
 
