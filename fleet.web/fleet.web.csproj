@@ -159,6 +159,9 @@
     <Content Include="Client\app.js" />
     <Content Include="Client\css\bootstrap-responsive.min.css" />
     <Content Include="Client\css\bootstrap.min.css" />
+    <Content Include="Client\generated\inventory-templates.js" />
+    <Content Include="Client\generated\inventory.js" />
+    <Content Include="Client\generated\main-templates.js" />
     <Content Include="Client\generated\main.js" />
     <Content Include="Client\img\glyphicons-halflings-white.png" />
     <Content Include="Client\img\glyphicons-halflings.png" />
@@ -178,8 +181,6 @@
     <Content Include="Client\modules\inventory\templates\body.html" />
     <Content Include="Client\modules\inventory\views\body.js" />
     <Content Include="Client\modules\main\controller.js" />
-    <Content Include="Client\modules\main\loader-b.js" />
-    <Content Include="Client\modules\main\loader-a.js" />
     <Content Include="Client\modules\main\loader.js" />
     <Content Include="Client\modules\main\templates\body.html" />
     <Content Include="Client\modules\main\templates\footer.html" />

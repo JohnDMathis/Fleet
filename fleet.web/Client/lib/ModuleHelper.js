@@ -47,11 +47,11 @@ Marionette.ModuleHelper = (function(Marionette, _) {
     moduleHelper.templateExt = ".html";
     moduleHelper.templatePrefix = "";
 
-    moduleHelper.loadModuleTemplates = function(module, callback) {
+    moduleHelper.loadModuleTemplates = function(module, callback, usePrecompiledTemplates) {
         moduleHelper.templatePath = module.templatePath;
         moduleHelper.templatePrefix = module.prefix;
 
-        if (window.AppIsReleased) {
+        if (usePrecompiledTemplates) {
             // store precompiled templates as templateCaches and go
             moduleHelper.storePrecompiledTemplates(Handlebars[moduleHelper.templatePrefix]);
             module.triggerMethod("templates:loaded", this);

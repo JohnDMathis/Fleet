@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.log.writeln('grunting');
-
+    grunt.unify = { };
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
@@ -43,34 +43,49 @@ module.exports = function(grunt) {
         console.log('unify marionette module: ' + modName);
         var loader = '../client/modules/' + modName + '/loader.js';
         var code = grunt.file.read(loader);
-        var sectionDelim = code.indexOf("// insert dependencies here");
-        if (sectionDelim === -1) return;
-
-        var depStart = code.indexOf("var dependencies", sectionDelim);
-        if (depStart === -1) return;
-        
-        depStart = code.indexOf('"', depStart + 16);
-        var depEnd = code.indexOf("]", depStart);
-        var dependencies = code.substr(depStart, (depEnd - depStart)).split(',');
-        for (var i = 0; i < dependencies.length; i++) {
-            var str = dependencies[i].replace('\r\n', '').trim();
-            str = str.substr(1, str.length - 2);
-            dependencies[i] = str;
-            console.log(dependencies[i]);
+        var placeholder = code.indexOf("// PLACEHOLDER.");
+        var placeholderEnd = code.indexOf("\n", placeholder);
+        var sectionDelim = code.indexOf("// SECTION DELIMITER.");
+        var sectionDelimEnd = code.indexOf("\n", sectionDelim);
+        if (placeholder === -1 || sectionDelim === -1) {
+            console.log('placeholder:' + placeholder);
+            console.log('sectionDelim:' + sectionDelim);
+            return;
         }
 
-        var moduleCode = code.substr(0, sectionDelim - 4);
+        var prefixCode = code.substr(0, placeholder - 1);
+        var start = placeholderEnd + 1;
+        var len = sectionDelim - start;
+        var suffixCode = code.substr(start, len);
         
-        for (var x in dependencies) {
-            var file = "../client/" + dependencies[x] + ".js";
-            moduleCode += grunt.getModuleCode(file);
+        console.log('prefixCode:\n' + prefixCode);
+        console.log('suffixCode:\n' + suffixCode);
+
+
+        grunt.unify.moduleCode = "";
+        
+        // add generated templates
+        var templatesFile = '../client/generated/' + modName + '-templates.js';
+        if (grunt.file.exists(templatesFile)) {
+            grunt.unify.moduleCode += '\n' + grunt.file.read(templatesFile);
         }
-        moduleCode += "\r\n});\r\n";
-        console.log(moduleCode);
-        grunt.file.write('../client/generated/' + modName + '.js', moduleCode);
+
+        grunt.unify.moduleCode += prefixCode;
+        grunt.file.recurse('../client/modules/' + modName, grunt.unify.addModuleFile);
+        grunt.unify.moduleCode += suffixCode;
+        
+        grunt.file.write('../client/generated/' + modName + '.js', grunt.unify.moduleCode);
     });
+
+    grunt.unify.addModuleFile = function (abspath, rootdir, subdir, filename) {
+        console.log(filename);
+        if (filename === 'loader.js') return;
+        var parts = filename.split('.');
+        if (parts[1] === 'js')
+            grunt.unify.moduleCode += grunt.unify.getModuleCode(abspath);
+    };
     
-    grunt.getModuleCode = function (file) {
+    grunt.unify.getModuleCode = function (file) {
         console.log(file);
         var code = grunt.file.read(file);
         var ch = code.charCodeAt(code.length - 1, 1);

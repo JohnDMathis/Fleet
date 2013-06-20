@@ -8,16 +8,25 @@
 // define base module elements; other module files may depend
 // on this, but it must not depend on any other module files
 
-Fleet.module("Inventory", function () {
+Fleet.module("Inventory", function (Inventory, Fleet, Backbone, Marionette, $, _) {
     this.prefix = "inv";
     this.templatePath = "client/modules/inventory/templates/";
     this.views = {};
     this.template = function (str) {
         return this.prefix + '-' + str;
     };
+    
+    // PLACEHOLDER. DO NOT REMOVE! When "Unifying" this module, external module files will be inserted here.
+
+    this.start = function () {
+            Marionette.ModuleHelper.loadModuleTemplates(Inventory, Inventory.show, window.AppIsReleased);
+    };
+
+    // call start() like this when this module is required immediately
+    Fleet.addInitializer(this.start);
 });
 
-
+// SECTION DELIMITER. DO NOT REMOVE! Code below this line will not be included in release mode.
 
 // Recommended: define all dependencies for this module here.
 // while you could spread dependency requirements
@@ -26,27 +35,11 @@ Fleet.module("Inventory", function () {
 // defining them all, here, has the advantage of limiting use of RequireJS
 // to this loader file only
 
-var dependencies = [
+define([
     "modules/inventory/controller",
     "modules/inventory/views/body"
-];
-
-
-// only when in 'release' mode, depend on the generated templates file
-if (window.AppIsReleased) {
-    dependencies.push('generated/inv-templates');
-}
-
-// define the loader last. generally, it should depend on all
-// module files, otherwise they may not get loaded
-define(dependencies,
-    function () {
-        Fleet.module("Inventory", function (Inventory, Fleet, Backbone, Marionette, $, _) {
-            
-            Fleet.addInitializer(function () {
-                // load templates for this module
-                Marionette.ModuleHelper.loadModuleTemplates(Fleet.Inventory, Fleet.Inventory.show);
-            });
-        });
-    });
+], function () {
+    // call start like this when the module is not loaded immediately
+    Fleet.Inventory.start();
+});
     

@@ -31,7 +31,7 @@ require.config({
 });
 
 
-require(["marionette","handlebars", "modulehelper" ], function (Marionette) {
+require(["marionette", "handlebars", "modulehelper"], function (Marionette) {
     window.Fleet = new Marionette.Application();
     Fleet.addRegions({
         header: "#header-region",
@@ -40,19 +40,30 @@ require(["marionette","handlebars", "modulehelper" ], function (Marionette) {
         body2: "#body2-region"
     });
 
-    var dependencies = [];
-    if(window.AppIsReleased)
-        dependencies.push("generated/main");
-    else
-        dependencies.push("modules/main/loader");
-    
-    require(dependencies, function () {
+    Fleet.modules = function (name, arr) {
+        if(_.isUndefined(arr)) arr = [];
+        if (_.isObject(name)) {
+            _.each(name, function (thisName) {
+                Fleet.modules(thisName, arr);
+            });
+            return arr;
+        }
+        if (window.AppIsReleased)
+            arr.push("generated/" + name);
+        else
+            arr.push("modules/" + name + "/loader");
+        return arr;
+    };
+
+
+    require(Fleet.modules("main"), function () {
         Fleet.start();
     });
 
     Fleet.commands.setHandler("inventoryModuleRequested", function() {
-        require(["modules/inventory/loader"]);
+        require(Fleet.modules("inventory"));
     });
+
 
 });
 

@@ -16,37 +16,31 @@ Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
         return Main.prefix + '-' + str;
     };
     
-    Fleet.addInitializer(function () {
-        // load templates for this module
-        Marionette.ModuleHelper.loadModuleTemplates(Main, Main.show);
-    });
+    // PLACEHOLDER. DO NOT REMOVE! When "Unifying" this module, external module files will be inserted here.
+
+    this.start = function () {
+        Marionette.ModuleHelper.loadModuleTemplates(Main, Main.show, window.AppIsReleased);
+    };
     
-    // insert dependencies here
+    Fleet.addInitializer(this.start);
+    
 });
 
-//!Section Delimiter. Do not change or remove!
+// SECTION DELIMITER. DO NOT REMOVE! Code below this line will not be included in release mode.
 
-// Recommended: define all dependencies for this module
+// Recommended: define all dependencies for this module here.
 // while you could spread dependency requirements
 // over all your module files on purely "as needed" basis,
 // this adds to complication of code in your module files
 // defining them all, here, has the advantage of limiting use of RequireJS
 // to this loader file only
 
-
-var dependencies = [
-    "modules/main/controller",
+define(
+    ["modules/main/controller",
     "modules/main/views/header",
     "modules/main/views/footer",
     "modules/main/views/body"
-];
-
-
- // only when in 'release' mode, depend on the generated templates file
-if (window.AppIsReleased) {
-    dependencies.push('generated/main-templates');
-}
-
-// define and load dependencies
-define(dependencies, function() {});
+], function () {
+    Fleet.Main.start();
+});
 

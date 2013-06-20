@@ -10,7 +10,7 @@ SET _dir=%1
 
 
 SET _tmpDir=%_dir%client\modules\inventory\templates\
-SET _outputFile=%_dir%client\generated\inv-templates.js
+SET _outputFile=%_dir%client\generated\inventory-templates.js
 
 handlebars "%_tmpDir%body.html"  -m -n "Handlebars.inv" -f  "%_outputFile%"
 
