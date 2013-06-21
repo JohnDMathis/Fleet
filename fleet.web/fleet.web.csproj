@@ -243,8 +243,10 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>IF $(ConfigurationName) EQU Release (
-$(ProjectDir)build\grunt
-
+cd $(ProjectDir)build
+grunt
+cd $(ProjectDir)
+)
 
 </PostBuildEvent>
   </PropertyGroup>

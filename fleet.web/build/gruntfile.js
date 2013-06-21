@@ -1,6 +1,4 @@
 module.exports = function(grunt) {
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.log.writeln('grunting');
     grunt.unify = { };
     grunt.handlebars = {};
     grunt.handlebars.simpleName = function (fileName) {
@@ -14,9 +12,13 @@ module.exports = function(grunt) {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            build: {
-                src: '../client/<%= pkg.main %>.js',
-                dest: 'client/<%= pkg.main %>.min.js'
+            main: {
+                src: '../client/generated/main.js',
+                dest: '../client/generated/main.js'
+            },
+            inventory: {
+                src: '../client/generated/inventory.js',
+                dest: '../client/generated/inventory.js'
             }
         },
         handlebars: {
@@ -26,7 +28,7 @@ module.exports = function(grunt) {
                         processName: grunt.handlebars.simpleName
                     },
                     files: {
-                        '../client/generated/main-templates.js': '../client/modules/main/templates/*.html'
+                        'temp-main-templates.js': '../client/modules/main/templates/*.html'
                     }
                 },
                 inventory: {
@@ -35,23 +37,18 @@ module.exports = function(grunt) {
                         processName: grunt.handlebars.simpleName
                     },
                     files: {
-                        '../client/generated/inv-templates.js': '../client/modules/inventory/templates/*.html'
+                        'temp-inventory-templates.js': '../client/modules/inventory/templates/*.html'
                     }
                 }
             }
     });
     
     grunt.loadNpmTasks('grunt-contrib-handlebars');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+
     grunt.registerTask('compile', ['handlebars:main', 'handlebars:inventory']);
     grunt.registerTask('release', ['unify:main', 'unify:inventory']);
-    grunt.registerTask('default', ['compile', 'release']);
-
-    grunt.registerMultiTask('clean', function() {
-        console.log("clean it:" + this.filesSrc);
-        var txt = grunt.file.read(this.fileSrc);
-        var lines = txt.split['\n'];
-        console.log(lines.count);   
-    });
+    grunt.registerTask('default', ['compile', 'release', 'uglify']);
 
     grunt.registerTask('unify', 'Convert a set of Marionette Module files to a single file', function (modName) {
         console.log('unify marionette module: ' + modName);
@@ -74,9 +71,11 @@ module.exports = function(grunt) {
         grunt.unify.moduleCode = "";
         
         // add generated templates
-        var templatesFile = '../client/generated/' + modName + '-templates.js';
+        var templatesFile = 'temp-' + modName + '-templates.js';
         if (grunt.file.exists(templatesFile)) {
+            console.log('Adding module templates: ' + templatesFile);
             grunt.unify.moduleCode += '\n' + grunt.file.read(templatesFile);
+            grunt.file.delete(templatesFile);
         }
 
         grunt.unify.moduleCode += prefixCode;
@@ -84,6 +83,7 @@ module.exports = function(grunt) {
         grunt.unify.moduleCode += suffixCode;
         
         grunt.file.write('../client/generated/' + modName + '.js', grunt.unify.moduleCode);
+        
     });
 
     grunt.unify.addModuleFile = function (abspath, rootdir, subdir, filename) {
