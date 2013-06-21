@@ -2,6 +2,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.log.writeln('grunting');
     grunt.unify = { };
+    grunt.handlebars = {};
+    grunt.handlebars.simpleName = function (fileName) {
+        var parts = fileName.split('/');
+        var parts2 = parts[parts.length - 1].split('.');
+        return parts2[0];
+    };
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
@@ -14,47 +20,31 @@ module.exports = function(grunt) {
             }
         },
         handlebars: {
-            //compile: {
-            //    options: {
-            //        namespace: 'jst',
-            //        node: false
-            //    },
-            //    files: {
-            //        'test.js': 'body.html'
-            //    }
-            //}
-                compile: {
+                main: {
                     options: {
                         namespace: 'Handlebars.main',
-                        node: true,
-                        processName: function (fileName) {
-                            console.log(fileName);
-                            var parts = fileName.split('/');
-                            var parts2 = parts[parts.length - 1].split('.');
-                            console.log(parts2[0]);
-                            return parts2[0];
-                        }
+                        processName: grunt.handlebars.simpleName
                     },
                     files: {
-                        '../client/generated/main-templates3.js': '../client/modules/main/templates/*.html'
+                        '../client/generated/main-templates.js': '../client/modules/main/templates/*.html'
+                    }
+                },
+                inventory: {
+                    options: {
+                        namespace: 'Handlebars.inv',
+                        processName: grunt.handlebars.simpleName
+                    },
+                    files: {
+                        '../client/generated/inv-templates.js': '../client/modules/inventory/templates/*.html'
                     }
                 }
             }
-            //main: {
-            //    files: {
-            //        '../client/generated/main-templates2.js': '../client/modules/main/templates/*.html'
-            //    },
-            //    options: {
-            //        namespace: 'Handlebars.main'
-            //    }
-            //}
-        //}
     });
-
+    
     grunt.loadNpmTasks('grunt-contrib-handlebars');
-    //grunt.loadNpmTasks('grunt-handlebars-compiler');
+    grunt.registerTask('compile', ['handlebars:main', 'handlebars:inventory']);
     grunt.registerTask('release', ['unify:main', 'unify:inventory']);
-    grunt.registerTask('default', []);
+    grunt.registerTask('default', ['compile', 'release']);
 
     grunt.registerMultiTask('clean', function() {
         console.log("clean it:" + this.filesSrc);

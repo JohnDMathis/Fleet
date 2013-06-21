@@ -159,10 +159,6 @@
     <Content Include="Client\app.js" />
     <Content Include="Client\css\bootstrap-responsive.min.css" />
     <Content Include="Client\css\bootstrap.min.css" />
-    <Content Include="Client\generated\inventory-templates.js" />
-    <Content Include="Client\generated\inventory.js" />
-    <Content Include="Client\generated\main-templates.js" />
-    <Content Include="Client\generated\main.js" />
     <Content Include="Client\img\glyphicons-halflings-white.png" />
     <Content Include="Client\img\glyphicons-halflings.png" />
     <Content Include="Client\lib\backbone.js" />
@@ -182,7 +178,7 @@
     <Content Include="Client\modules\inventory\views\body.js" />
     <Content Include="Client\modules\main\controller.js" />
     <Content Include="Client\modules\main\loader.js" />
-    <Content Include="Client\modules\main\templates\body.html" />
+    <None Include="Client\modules\main\templates\body.hbs" />
     <Content Include="Client\modules\main\templates\footer.html" />
     <Content Include="Client\modules\main\views\body.js" />
     <Content Include="Client\modules\main\views\footer.js" />
@@ -203,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Client\generated\" />
     <Folder Include="Models\" />
     <Folder Include="NewFolder1\" />
     <Folder Include="Services\" />
@@ -246,9 +243,8 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>IF $(ConfigurationName) EQU Release (
-$(ProjectDir)client\modules\main\templates\compile.cmd "$(ProjectDir)"
-$(ProjectDir)client\modules\inventory\templates\compile.cmd "$(ProjectDir)"
-)
+$(ProjectDir)build\grunt
+
 
 </PostBuildEvent>
   </PropertyGroup>
