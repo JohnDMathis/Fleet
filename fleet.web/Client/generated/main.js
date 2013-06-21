@@ -1,5 +1,39 @@
+var glob = ('undefined' === typeof window) ? global : window,
 
-(function(){var a=Handlebars.template,b=Handlebars.main=Handlebars.main||{};b["body.html"]=a(function(a,b,c,d,e){return this.compilerInfo=[2,">= 1.0.0-rc.3"],c=c||a.helpers,e=e||{},'﻿This is the body of the main module\r\n<div>\r\n    <div id="inventory-btn" class="btn btn-primary">Load Inventory Module</div>\r\n</div>'}),b["footer.html"]=a(function(a,b,c,d,e){return this.compilerInfo=[2,">= 1.0.0-rc.3"],c=c||a.helpers,e=e||{},"﻿<h3>Main Footer</h3>"}),b["header.html"]=a(function(a,b,c,d,e){return this.compilerInfo=[2,">= 1.0.0-rc.3"],c=c||a.helpers,e=e||{},"﻿<h2>Main Header</h2>\r\n"})})()
+Handlebars = glob.Handlebars || require('handlebars');
+
+this["Handlebars"] = this["Handlebars"] || {};
+this["Handlebars"]["main"] = this["Handlebars"]["main"] || {};
+
+this["Handlebars"]["main"]["body"] = Handlebars.template(function (Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, '>= 1.0.0'];
+    helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+
+
+
+    return "This is the body of the main module\r\n<div>\r\n    <div id=\"inventory-btn\" class=\"btn btn-primary\">Load Inventory Module</div>\r\n</div>";
+});
+
+this["Handlebars"]["main"]["footer"] = Handlebars.template(function (Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, '>= 1.0.0'];
+    helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+
+
+
+    return "<h3>Main Footer</h3>";
+});
+
+this["Handlebars"]["main"]["header"] = Handlebars.template(function (Handlebars, depth0, helpers, partials, data) {
+    this.compilerInfo = [4, '>= 1.0.0'];
+    helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+
+
+
+    return "<h2>Main Header</h2>\r\n";
+});
+
+if (typeof exports === 'object' && exports) { module.exports = this["Handlebars"]["main"]; }
+
 // loader for Main module
 // the 'loader' includes initial module definition and manages the loading
 // of all module files including javascript and templates

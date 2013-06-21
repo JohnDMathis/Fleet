@@ -13,15 +13,46 @@ module.exports = function(grunt) {
                 dest: 'client/<%= pkg.main %>.min.js'
             }
         },
-        mod: {
-            foo: {
-                src: '.'
-            },
-            bar: {
-                src: '../client/modules/main/loader.js'
+        handlebars: {
+            //compile: {
+            //    options: {
+            //        namespace: 'jst',
+            //        node: false
+            //    },
+            //    files: {
+            //        'test.js': 'body.html'
+            //    }
+            //}
+                compile: {
+                    options: {
+                        namespace: 'Handlebars.main',
+                        node: true,
+                        processName: function (fileName) {
+                            console.log(fileName);
+                            var parts = fileName.split('/');
+                            var parts2 = parts[parts.length - 1].split('.');
+                            console.log(parts2[0]);
+                            return parts2[0];
+                        }
+                    },
+                    files: {
+                        '../client/generated/main-templates3.js': '../client/modules/main/templates/*.html'
+                    }
+                }
             }
-        }
+            //main: {
+            //    files: {
+            //        '../client/generated/main-templates2.js': '../client/modules/main/templates/*.html'
+            //    },
+            //    options: {
+            //        namespace: 'Handlebars.main'
+            //    }
+            //}
+        //}
     });
+
+    grunt.loadNpmTasks('grunt-contrib-handlebars');
+    //grunt.loadNpmTasks('grunt-handlebars-compiler');
     grunt.registerTask('release', ['unify:main', 'unify:inventory']);
     grunt.registerTask('default', []);
 
