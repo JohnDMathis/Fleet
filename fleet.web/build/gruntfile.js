@@ -1,10 +1,11 @@
 module.exports = function(grunt) {
     grunt.unify = { };
     grunt.handlebars = {};
-    grunt.handlebars.simpleName = function (fileName) {
-        var parts = fileName.split('/');
-        var parts2 = parts[parts.length - 1].split('.');
-        return parts2[0];
+    // extract just the file name from the full path
+    grunt.handlebars.simpleName = function (filePath) {
+        var fileParts = filePath.split('/');
+        var fileNameParts = fileParts[fileParts.length - 1].split('.');
+        return fileNameParts[0];
     };
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -47,8 +48,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('compile', ['handlebars:main', 'handlebars:inventory']);
-    grunt.registerTask('release', ['unify:main', 'unify:inventory']);
-    grunt.registerTask('default', ['compile', 'release', 'uglify']);
+    grunt.registerTask('unify-all', ['unify:main', 'unify:inventory']);
+    grunt.registerTask('default', ['compile', 'unify-all', 'uglify']);
 
     grunt.registerTask('unify', 'Convert a set of Marionette Module files to a single file', function (modName) {
         console.log('unify marionette module: ' + modName);

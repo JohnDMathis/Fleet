@@ -18,11 +18,12 @@ Fleet.module("Main", function (Main, Fleet, Backbone, Marionette, $, _) {
     
     // PLACEHOLDER. DO NOT REMOVE! When "Unifying" this module, external module files will be inserted here.
 
-    this.start = function () {
+    this.startModule = function () {
+        console.log('startModule');
         Marionette.ModuleHelper.loadModuleTemplates(Main, Main.show, window.AppIsReleased);
     };
     
-    Fleet.addInitializer(this.start);
+    Fleet.addInitializer(this.startModule);
     
 });
 
@@ -41,6 +42,6 @@ define(
     "modules/main/views/footer",
     "modules/main/views/body"
 ], function () {
-    Fleet.Main.start();
+    Fleet.Main.startModule();
 });
 

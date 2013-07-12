@@ -5,12 +5,13 @@
         Fleet is a demo / playground application designed to highlight a number of technologies.  For more information, see Fleet on github: <a href="https://github.com/johndmathis/fleet" target="_blank">github.com/johndmathis/fleet</a> 
     </p>
     <p>
-        <h2>What's interesting about this, so far?</h2>
+        <h2>What's interesting about this?</h2>
         <ul>
             <li>RequireJs is used to load the entire application.</li>
             <li>The header, this body, and footer sections are all defined in a Marionette module, called 'inventory'.</li>
             <li>The inventory module definition utilizes multiple files, which are all loaded by RequireJS.</li>
             <li>The templates are in separate files as well, and are loaded asynchronously once the inventory module is ready.</li>
+            <li>When built for production ("Release" configuration), the module and it's templates are all stored in a single file.</li>
         </ul>    
     </p>
     </article>

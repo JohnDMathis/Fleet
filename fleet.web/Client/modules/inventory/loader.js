@@ -18,12 +18,12 @@ Fleet.module("Inventory", function (Inventory, Fleet, Backbone, Marionette, $, _
     
     // PLACEHOLDER. DO NOT REMOVE! When "Unifying" this module, external module files will be inserted here.
 
-    this.start = function () {
+    this.startModule = function () {
             Marionette.ModuleHelper.loadModuleTemplates(Inventory, Inventory.show, window.AppIsReleased);
     };
 
-    // call start() like this when this module is required immediately
-    Fleet.addInitializer(this.start);
+    // call startModule() like this when this module is required immediately
+    Fleet.addInitializer(this.startModule);
 });
 
 // SECTION DELIMITER. DO NOT REMOVE! Code below this line will not be included in release mode.
@@ -39,7 +39,7 @@ define([
     "modules/inventory/controller",
     "modules/inventory/views/body"
 ], function () {
-    // call start like this when the module is not loaded immediately
-    Fleet.Inventory.start();
+    // call startModule like this when the module is not loaded immediately
+    Fleet.Inventory.startModule();
 });
     
